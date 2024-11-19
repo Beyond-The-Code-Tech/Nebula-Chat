@@ -3,14 +3,13 @@ import { motion } from 'framer-motion';
 import { MessageSquare, Shield, Share2 } from 'lucide-react';
 import AuthModal from './AuthModal';
 
-export default function Hero() {
+type HeroProps = {
+  onTryDemo: () => void;
+};
+
+export default function Hero({ onTryDemo }: HeroProps) {
   const [isAuthOpen, setIsAuthOpen] = useState(false);
   const [authView, setAuthView] = useState<'login' | 'signup'>('login');
-
-  const handleSignUp = () => {
-    setAuthView('signup');
-    setIsAuthOpen(true);
-  };
 
   const handleLogin = () => {
     setAuthView('login');
@@ -64,7 +63,7 @@ export default function Hero() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={handleSignUp}
+                onClick={onTryDemo}
                 className="px-8 py-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full text-white font-semibold shadow-lg hover:shadow-purple-500/50 transition-all duration-300"
               >
                 Try Demo
